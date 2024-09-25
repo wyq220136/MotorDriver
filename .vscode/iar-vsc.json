@@ -1,0 +1,16 @@
+{
+  "workspace": {
+    "path": "${workspaceFolder}\\STM32CubeF1-master\\Drivers\\CMSIS\\DSP\\Projects\\IAR\\arm_cortexM_math.eww"
+  },
+  "workspaces": {
+    "${workspaceFolder}\\STM32CubeF1-master\\Drivers\\CMSIS\\DSP\\Projects\\IAR\\arm_cortexM_math.eww": {
+      "configs": {},
+      "selected": {
+        "path": "${workspaceFolder}\\STM32CubeF1-master\\Drivers\\CMSIS\\DSP\\Projects\\IAR\\arm_cortexM_math.ewp"
+      }
+    }
+  },
+  "workbench": {
+    "path": "d:\\term_files\\IAR9_50_1"
+  }
+}
