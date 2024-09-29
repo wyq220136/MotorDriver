@@ -4,21 +4,21 @@
 #include "cfg.h"
 typedef struct
 {
-	int16_t Iq;
-	int16_t Id;
+	float Iq;
+	float Id;
 }Park;
 
 typedef struct
 {
-	int16_t Ialpha;
-	int16_t Ibeta;
+	float Ialpha;
+	float Ibeta;
 }Clark;
 
 typedef struct
 {
-	int16_t Ia;
-	int16_t Ib;
-	int16_t Ic;
+	float Ia;
+	float Ib;
+	float Ic;
 }Raw;
 
 typedef struct
@@ -35,5 +35,12 @@ typedef struct
 	float s_last;
 	float s_now;
 }Filt;
+
+void ParkConv(void);
+void ClarkConv(void);
+void ParkConvT(void);
+void ClarkConvT(void);
+float LowPass(float x);
+void FiltConf(void);
 
 #endif

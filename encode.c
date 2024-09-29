@@ -2,6 +2,8 @@
 #include "cfg.h"
 
 SPI_HandleTypeDef hspi1;
+float angle = 0.0;
+
 void MX_SPI1_Init(void)
 {
   /* SPI1 parameter configuration*/
@@ -12,11 +14,11 @@ void MX_SPI1_Init(void)
 	hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
 	hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
 	hspi1.Init.NSS = SPI_NSS_SOFT;
-	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
 	hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
 	hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
 	hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-	hspi1.Init.CRCPolynomial = 10;
+	hspi1.Init.CRCPolynomial = 7;
 	HAL_SPI_Init(&hspi1);
 	
 	
@@ -59,4 +61,10 @@ uint16_t AS5047_read(uint16_t add)
 		data=SPI_ReadWrite_OneByte(NOP|0x4000); //发送一条空指令，读取上一次指令返回的数据。
 	data &=0x3fff;
 	return data;
+}
+
+void getAngle(void)
+{
+	angle=(float)(AS5047_read(ANGLEUNC));
+	angle = angle/16384*360;
 }

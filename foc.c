@@ -42,3 +42,10 @@ float LowPass(float x)
 	out = filter.alpha*filter.s_now + filter.s_last*(1-filter.alpha);
 	return out;
 }
+
+void FiltConf(void)
+{
+	filter.alpha = 0.5;
+	filter.s_last = 0;
+	filter.s_now = 0;
+}

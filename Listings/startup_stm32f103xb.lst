@@ -475,19 +475,10 @@ ARM Macro Assembler    Page 8
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\objects\startup_stm32f103xb.d -o.\objects\startup_stm32f103xb.o 
-<<<<<<< HEAD
--I"D:\term_files\STM new\FOC\RTE" -ID:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.
-5\Device\Include -ID:\SRC\UV4\ARM\CMSIS\Include -ID:\SRC\UV4\ARM\PACK\Keil\STM3
-2F1xx_DFP\1.0.5 --predefine="__UVISION_VERSION SETA 514" --predefine="STM32F10X
-_MD SETA 1" --list=.\listings\startup_stm32f103xb.lst core\startup_stm32f103xb.
-s
-=======
--IC:\Users\TianY\Desktop\MotorDrivers\MotorDriver\RTE\_Target_1 -IC:\Applicatio
-n\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include -IC:\Application\Kei
-l_v5\ARM\CMSIS\Include -IC:\Application\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4
-.1 --predefine="__UVISION_VERSION SETA 522" --predefine="STM32F10X_MD SETA 1" -
--list=.\listings\startup_stm32f103xb.lst core\startup_stm32f103xb.s
->>>>>>> dbaaf4fc23987c6b08907ee2353d39e8cc388f37
+-ID:\SRC\motorDriver\RTE -ID:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\
+Include -ID:\SRC\UV4\ARM\CMSIS\Include -ID:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP
+\1.0.5 --predefine="__UVISION_VERSION SETA 514" --predefine="STM32F10X_MD SETA 
+1" --list=.\listings\startup_stm32f103xb.lst core\startup_stm32f103xb.s
 
 
 

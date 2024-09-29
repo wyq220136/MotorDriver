@@ -112,11 +112,11 @@ void TIM_Init(void)
 	__HAL_RCC_TIM4_CLK_ENABLE();
 	
 	TIM2_Handler.Instance = TIM2;
-	TIM2_Handler.Init.Prescaler = 3600-1;
+	TIM2_Handler.Init.Prescaler = 36-1;
 	TIM2_Handler.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	
 	TIM2_Handler.Init.CounterMode = TIM_COUNTERMODE_UP;
-	TIM2_Handler.Init.Period = 10-1; //1ms
+	TIM2_Handler.Init.Period = 10-1; //10us读取一次六步换向
 	
 	
 	htim4.Instance = TIM4;
@@ -124,7 +124,7 @@ void TIM_Init(void)
 	htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	
 	htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim4.Init.Period = 20-1; //2ms采样一次转速
+	htim4.Init.Period = 10-1; //1ms采样一次转速
 	
 	HAL_TIM_Base_Init(&TIM2_Handler); 
 	HAL_TIM_Base_Init(&htim4); 
@@ -261,4 +261,5 @@ void sys_init(void)
     usart_init(115200);
 	gtimRestart();
 	MX_SPI1_Init();
+	ctrl_Init();
 }

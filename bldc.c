@@ -8,6 +8,9 @@ extern int16_t counter;
 extern uint8_t start_cnt; //娑撳﹤宕屽▽鑳箯閸欐牗鐖ｈ箛妞剧秴
 extern long long encoder_num;
 extern uint32_t normal_cnt; //閼惧嘲褰囨潏鎾冲弳閹规洝骞忕拋鈩冩殶閸婏拷
+extern Foc motor_foc;
+extern float angle;
+float last_angle = 0.0;
 
 pctr basic_ctrl[6] =
 {
@@ -48,10 +51,10 @@ uint8_t Is_Forward(void)
 
 	if(forward[idx] == motor.step_last)
 	{
-		return 1;
+		return 1;//正转返回1
 	}
 	else
-		return 0;
+		return 0;//倒转返回0
 
 }
 //鍏鎹㈠悜鍑芥暟
@@ -156,7 +159,7 @@ void Start_motor(void)
 *******************************************************************************/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	uint8_t i;
+	//uint8_t i;
 	if(htim->Instance == TIM2)
 	{
 		if(motor.run_flag == START)    //鐢垫満澶勪簬杩愯鐘舵€佹墠浼氳鍙�
@@ -185,8 +188,25 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	if(htim->Instance == TIM4)
 	{
-		getEncode(i);
-		counter = 0;
+		//getEncode(i);
+		//counter = 0;
+		getAngle();
+		angle = LowPass(angle);
+		if(Is_Forward())
+		{
+			if(angle<last_angle)
+				motor_foc.theta = angle+360-last_angle;
+			else
+				motor_foc.theta = angle - last_angle;
+		}
+		else
+		{
+			if(angle>last_angle)
+				motor_foc.theta = angle-360-last_angle;
+			else
+				motor_foc.theta = angle - last_angle;
+		}
+		cal_motor();
 	}
 }
 

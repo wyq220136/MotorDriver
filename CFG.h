@@ -15,7 +15,7 @@
 #define TIMPSC 71
 #define TIMARR 499
 #define TIMPSC2 35
-#define RADIUS 5
+#define RADIUS 0.04//车轮半径
 #define PI 3.141592654
 #define SQRT3 1.732051
 
