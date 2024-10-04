@@ -19,12 +19,15 @@ long long encoder_num = 0;//用于记录霍尔编码器码数
 uint32_t rpm, target_rpm;
 float target_angle;
 
-adrc Adrc;
+adrc Adrc1, Adrc2, Adrc3;
 pid Pid;
+pulse_volt volt_out = {0};
 
 void ctrl_Init(void)
 {
-	adrcConf(&Adrc);
+	adrcConf(&Adrc1);
+	adrcConf(&Adrc2);
+	adrcConf(&Adrc3);
 	Pid_Conf(&Pid);
 	FiltConf();
 }
@@ -79,7 +82,7 @@ void Pid_Cal(pid*k, int16_t e)
 	k->pid_out = k->pid_out>k->limit_h?k->limit_h:(k->pid_out<k->limit_l?k->limit_l:k->pid_out);
 }
 
-void cal_motor()
+void cal_motor(void)
 {
 	
 	Speed_Rpm();

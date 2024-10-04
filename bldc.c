@@ -10,6 +10,12 @@ extern long long encoder_num;
 extern uint32_t normal_cnt; //閼惧嘲褰囨潏鎾冲弳閹规洝骞忕拋鈩冩殶閸婏拷
 extern Foc motor_foc;
 extern float angle;
+extern pulse_volt volt_out;
+extern adrc Adrc1, Adrc2, Adrc3;
+extern Foc motor_foc;
+extern uint8_t g_adc_dma_sta;
+extern uint16_t g_adc_ave[ADC_CH_NUM];
+
 float last_angle = 0.0;
 
 pctr basic_ctrl[6] =
@@ -207,6 +213,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				motor_foc.theta = angle - last_angle;
 		}
 		cal_motor();
+		
+		//adc_ave_filter();
+		if(g_adc_dma_sta == 1)
+		{
+		adc_ave_filter();
+		g_adc_dma_sta = 0;
+		volt_out.a_out = adrcCal(&Adrc1, motor_foc.motor_r.Ia, g_adc_ave[0]);
+		volt_out.b_out = adrcCal(&Adrc2, motor_foc.motor_r.Ib, g_adc_ave[1]);
+		volt_out.c_out = adrcCal(&Adrc3, motor_foc.motor_r.Ic, g_adc_ave[2]);
+		adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
+			
+		//printf("adc1:%d, adc2:%d, adc3:%d\n", g_adc_ave[0], g_adc_ave[1], g_adc_ave[2]);
+		motor.pulsea = (__Constrain(volt_out.a_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		motor.pulseb = (__Constrain(volt_out.b_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		motor.pulsec = (__Constrain(volt_out.c_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		}
 	}
 }
 

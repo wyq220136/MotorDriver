@@ -1,5 +1,5 @@
 Dependencies for Project 'MotorDriver', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x66F95877)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x66FFC04A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\user_inc\main.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
@@ -31,10 +31,10 @@ I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_nucleo.h)(0x66EA4BC6)
-I (cfg.h)(0x66F94580)
-I (init.h)(0x66EA4BC6)
+I (cfg.h)(0x66FFBE47)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -75,7 +75,7 @@ I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_nucleo.h)(0x66EA4BC6)
-F (.\stm32f1xx_it.c)(0x66EAA829)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\stm32f1xx_it.o --omf_browse .\objects\stm32f1xx_it.crf --depend .\objects\stm32f1xx_it.d)
+F (.\stm32f1xx_it.c)(0x66FFBD3E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\stm32f1xx_it.o --omf_browse .\objects\stm32f1xx_it.crf --depend .\objects\stm32f1xx_it.d)
 I (.\user_inc\main.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
@@ -108,10 +108,10 @@ I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_nucleo.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_it.h)(0x66EA4BC6)
-I (cfg.h)(0x66F94580)
-I (init.h)(0x66EA4BC6)
+I (cfg.h)(0x66FFBE47)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1547,7 +1547,7 @@ I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_ll_utils.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_ll_system.h)(0x66EA4BC6)
 F (.\core\startup_stm32f103xb.s)(0x66EA4BC6)(--cpu Cortex-M3 -g --apcs=interwork -I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5--pd "__UVISION_VERSION SETA 514" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f103xb.lst --xref -o .\objects\startup_stm32f103xb.o --depend .\objects\startup_stm32f103xb.d)
-F (.\init.c)(0x66F95878)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
+F (.\init.c)(0x670001F2)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1577,10 +1577,10 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (cfg.h)(0x66F94580)
-I (init.h)(0x66EA4BC6)
+I (cfg.h)(0x66FFBE47)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1589,7 +1589,7 @@ I (delay.h)(0x66EAA7FC)
 I (sys.h)(0x66EAA7FC)
 I (usart.h)(0x66EAA7FC)
 I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
-F (.\bldc.c)(0x66F95877)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\bldc.o --omf_browse .\objects\bldc.crf --depend .\objects\bldc.d)
+F (.\bldc.c)(0x670001F2)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\bldc.o --omf_browse .\objects\bldc.crf --depend .\objects\bldc.d)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1619,10 +1619,10 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (cfg.h)(0x66F94580)
-I (init.h)(0x66EA4BC6)
+I (cfg.h)(0x66FFBE47)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1631,8 +1631,8 @@ I (delay.h)(0x66EAA7FC)
 I (sys.h)(0x66EAA7FC)
 I (usart.h)(0x66EAA7FC)
 I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
-F (.\motor_ctrl.c)(0x66F95877)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\motor_ctrl.o --omf_browse .\objects\motor_ctrl.crf --depend .\objects\motor_ctrl.d)
-I (cfg.h)(0x66F94580)
+F (.\motor_ctrl.c)(0x66FFBC97)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\motor_ctrl.o --omf_browse .\objects\motor_ctrl.crf --depend .\objects\motor_ctrl.d)
+I (cfg.h)(0x66FFBE47)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1662,9 +1662,9 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (init.h)(0x66EA4BC6)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1676,8 +1676,8 @@ I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (net_pid.h)(0x66EA4BC6)
 I (D:\SRC\UV4\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (D:\SRC\UV4\ARM\ARMCC\include\math.h)(0x5475F2FE)
-F (.\measure.c)(0x66EE6474)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\measure.o --omf_browse .\objects\measure.crf --depend .\objects\measure.d)
-I (cfg.h)(0x66F94580)
+F (.\measure.c)(0x67000180)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\measure.o --omf_browse .\objects\measure.crf --depend .\objects\measure.d)
+I (cfg.h)(0x66FFBE47)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1707,9 +1707,9 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (init.h)(0x66EA4BC6)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1719,7 +1719,7 @@ I (sys.h)(0x66EAA7FC)
 I (usart.h)(0x66EAA7FC)
 I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
 F (.\comm.c)(0x66EA4BC6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\comm.o --omf_browse .\objects\comm.crf --depend .\objects\comm.d)
-I (cfg.h)(0x66F94580)
+I (cfg.h)(0x66FFBE47)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1749,9 +1749,9 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (init.h)(0x66EA4BC6)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1791,10 +1791,10 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (cfg.h)(0x66F94580)
-I (init.h)(0x66EA4BC6)
+I (cfg.h)(0x66FFBE47)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1900,8 +1900,8 @@ I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
 I (usart.h)(0x66EAA7FC)
 I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
-F (.\foc.c)(0x66F9485D)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\foc.o --omf_browse .\objects\foc.crf --depend .\objects\foc.d)
-I (cfg.h)(0x66F94580)
+F (.\foc.c)(0x66FFBC97)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\foc.o --omf_browse .\objects\foc.crf --depend .\objects\foc.d)
+I (cfg.h)(0x66FFBE47)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1931,9 +1931,9 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (init.h)(0x66EA4BC6)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)
@@ -1945,7 +1945,7 @@ I (D:\SRC\UV4\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (D:\SRC\UV4\ARM\ARMCC\include\math.h)(0x5475F2FE)
 F (.\encode.c)(0x66F926A9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\STM32CubeF1-master\Drivers\CMSIS\Include -I.\STM32CubeF1-master\Drivers\STM32F1xx_HAL_Driver -I.\lib\Inc -I.\core -I.\user_inc-I D:\SRC\motorDriver\RTE-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I D:\SRC\UV4\ARM\CMSIS\Include-I D:\SRC\UV4\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o .\objects\encode.o --omf_browse .\objects\encode.crf --depend .\objects\encode.d)
 I (encode.h)(0x66F926A9)
-I (cfg.h)(0x66F94580)
+I (cfg.h)(0x66FFBE47)
 I (.\lib\Inc\stm32f1xx_hal.h)(0x66EA4BC6)
 I (.\user_inc\stm32f1xx_hal_conf.h)(0x66F0CF46)
 I (.\lib\Inc\stm32f1xx_hal_rcc.h)(0x66EA4BC6)
@@ -1975,9 +1975,9 @@ I (.\lib\Inc\stm32f1xx_hal_spi.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_tim_ex.h)(0x66EA4BC6)
 I (.\lib\Inc\stm32f1xx_hal_uart.h)(0x66EA4BC6)
-I (init.h)(0x66EA4BC6)
+I (init.h)(0x66FFBE8E)
 I (bldc.h)(0x66EB8CB1)
-I (motor_ctrl.h)(0x66F95877)
+I (motor_ctrl.h)(0x66FFBC97)
 I (measure.h)(0x66EA4BC6)
 I (comm.h)(0x66EA4BC6)
 I (foc.h)(0x66F95397)

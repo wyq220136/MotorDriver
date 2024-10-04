@@ -45,13 +45,20 @@ typedef struct
 	float r;
 }adrc;
 
+typedef struct
+{
+	float a_out;
+	float b_out;
+	float c_out;
+}pulse_volt;
+
 void ctrl_Init(void);
 void Enc_Rpm(void);
 void Rpm_Speed(void);
 void Speed_Rpm(void);
 void Pid_Conf(pid*k);
 void Pid_Cal(pid*k, int16_t e);
-void cal_motor();
+void cal_motor(void);
 void adrcConf(adrc*k);
 void adrcRSET(adrc*k);
 void adrcTD(adrc*k, float x);

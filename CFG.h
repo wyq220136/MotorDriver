@@ -19,12 +19,34 @@
 #define PI 3.141592654
 #define SQRT3 1.732051
 
+//霍尔信号采集引脚相关设置
 #define GPIO_HALLSENSOR  GPIOB
+#define PINHALLU GPIO_PIN_14
+#define PINHALLV GPIO_PIN_13
+#define PINHALLW GPIO_PIN_12
+
+//下桥臂配置相关
 #define GPIO_LBridge GPIOB
+#define LBU GPIO_PIN_0
+#define LBV GPIO_PIN_1
+#define LBW GPIO_PIN_2
+#define LBPIN_CLKON __HAL_RCC_GPIOB_CLK_ENABLE()
+
+//上桥臂PWM发波相关设置
+#define GPIO_HBridge GPIOA
+#define PINPWMU GPIO_PIN_11
+#define PINPWMV GPIO_PIN_9
+#define PINPWMW GPIO_PIN_10
+#define PWMPIN_CLKON __HAL_RCC_GPIOA_CLK_ENABLE()
+#define PWMTIM TIM1
+#define PWMTIM_CLKON __HAL_RCC_TIM1_CLK_ENABLE()
+#define PWM_REMAP __HAL_AFIO_REMAP_TIM1_PARTIAL()
+
 #define __Constrain(x) x>0.375?0.375:(x<-0.375?-0.375:x)
 
-#define UL_ON  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET)
-#define VL_ON  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET)
+//下桥臂开关函数
+#define UL_ON  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET)//A相开启
+#define VL_ON  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET)//B相开启
 #define WL_ON  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_SET)
 #define UL_OFF  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET)
 #define VL_OFF  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET)
@@ -43,9 +65,12 @@
 #define BACKWARD 0
 
 #define ADC_MEASURE ADC1
-#define ADC_CH_NUM 5
+#define ADC_CH_NUM 3
 #define ADC_MEM_NUM 50
 #define ADC_COLL 3
+#define ADC_GPIOPIN1 GPIO_PIN_1
+#define ADC_GPIOPIN2 GPIO_PIN_2
+#define ADC_GPIOPIN3 GPIO_PIN_3
 
 /**********************************************************************************
 电机电学参数
@@ -56,7 +81,8 @@
 #define ENC_OLD 51 //老电机一圈码数
 #define THETA_MAX 45 //最大回正力矩对应的角度
 #define V_OFFSET 0.375//防止FOC陷入死区，零点加入偏置
-#define KE 24 //电机反电动势常数
+//#define KE 24 //电机反电动势常数
+#define PROPA_PARAM 8 //相电压采样比
 
 #define SAMPLETIME 0.002//2ms读取一次电机转速
 #define ENATURE 2.718282//自然对数
