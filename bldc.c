@@ -219,9 +219,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 		adc_ave_filter();
 		g_adc_dma_sta = 0;
-		volt_out.a_out = adrcCal(&Adrc1, motor_foc.motor_r.Ia, g_adc_ave[0]);
-		volt_out.b_out = adrcCal(&Adrc2, motor_foc.motor_r.Ib, g_adc_ave[1]);
-		volt_out.c_out = adrcCal(&Adrc3, motor_foc.motor_r.Ic, g_adc_ave[2]);
+		volt_out.a_out = adrcCal(&Adrc1, motor_foc.motor_r.Ia+12, g_adc_ave[0]);
+		volt_out.b_out = adrcCal(&Adrc2, motor_foc.motor_r.Ib+12, g_adc_ave[1]);
+		volt_out.c_out = adrcCal(&Adrc3, motor_foc.motor_r.Ic+12, g_adc_ave[2]);
 		adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
 			
 		//printf("adc1:%d, adc2:%d, adc3:%d\n", g_adc_ave[0], g_adc_ave[1], g_adc_ave[2]);

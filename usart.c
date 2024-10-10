@@ -27,7 +27,8 @@
 #include "sys.h"
 #include "usart.h"
 
-
+uint8_t rxdata[4]={0};
+extern uint32_t target_rpm;
 /* 如果使用os,则包括下面的头文件即可. */
 #if SYS_SUPPORT_OS
 #include "os.h" /* os 使用 */
@@ -125,7 +126,8 @@ void usart_init(uint32_t baudrate)
     HAL_UART_Init(&g_uart1_handle);                                           /* HAL_UART_Init()会使能UART1 */
 
     /* 该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 */
-    HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE); 
+    HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdata, 4);
+	//HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE); 
 }
 
 /**
@@ -201,8 +203,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
                 }
             }
         }
-
-        HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE);
+		target_rpm = (rxdata[3]-'0')+(rxdata[2]-'0')*10+(rxdata[1]-'0')*100+(rxdata[0]-'0')*1000;
+		HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdata, 4);
+        //HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE);
     }
 }
 

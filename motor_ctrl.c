@@ -47,7 +47,7 @@ void Rpm_Speed(void)
 //实际速度转换为转速，用于目标转速计算
 void Speed_Rpm(void)
 {
-	target_rpm = target_speed / (2*RADIUS*PI);
+	//target_rpm = target_speed / (2*RADIUS*PI);
 	target_angle = target_rpm*360/1000;//每毫秒应该转过多少角度
 }
 
