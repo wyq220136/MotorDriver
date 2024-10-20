@@ -28,6 +28,10 @@ void ClarkConvT(void)
 	motor_foc.motor_r.Ia = motor_foc.motor_c.Ialpha;
 	motor_foc.motor_r.Ib = -motor_foc.motor_c.Ialpha/2+motor_foc.motor_c.Ibeta*SQRT3/2;
 	motor_foc.motor_r.Ic = -motor_foc.motor_c.Ialpha/2-motor_foc.motor_c.Ibeta*SQRT3/2;
+	
+	motor.pulsea = (__Constrain(motor_foc.motor_r.Ia/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+	motor.pulseb = (__Constrain(motor_foc.motor_r.Ib/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+	motor.pulsec = (__Constrain(motor_foc.motor_r.Ic/V_SOURCE)+V_OFFSET)*(TIMARR+1);
 }
 
 float LowPass(float x)

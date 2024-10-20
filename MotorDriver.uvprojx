@@ -544,11 +544,6 @@
               <FilePath>.\lib\Src\stm32f1xx_hal_mmc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f1xx_hal_msp_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lib\Src\stm32f1xx_hal_msp_template.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f1xx_hal_nand.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lib\Src\stm32f1xx_hal_nand.c</FilePath>

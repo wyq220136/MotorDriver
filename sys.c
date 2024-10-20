@@ -114,6 +114,7 @@ void sys_stm32_clock_init(uint32_t plln)
     rcc_osc_init.OscillatorType = RCC_OSCILLATORTYPE_HSE;       /* 选择要配置HSE */
     rcc_osc_init.HSEState = RCC_HSE_ON;                         /* 打开HSE */
     rcc_osc_init.HSEPredivValue = RCC_HSE_PREDIV_DIV1;          /* HSE预分频系数 */
+	 rcc_osc_init.HSIState = RCC_HSI_ON;
     rcc_osc_init.PLL.PLLState = RCC_PLL_ON;                     /* 打开PLL */
     rcc_osc_init.PLL.PLLSource = RCC_PLLSOURCE_HSE;             /* PLL时钟源选择HSE */
     rcc_osc_init.PLL.PLLMUL = plln;                             /* PLL倍频系数 */

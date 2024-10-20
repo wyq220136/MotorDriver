@@ -12,5 +12,6 @@ void Cap_Tim_Init(void);
 void capture_init(void);
 void adc_dma_enable(uint16_t cndtr);
 void adc_dma_init(uint32_t mar);
+void SystemClock_Config(void);
 
 #endif

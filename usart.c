@@ -27,7 +27,8 @@
 #include "sys.h"
 #include "usart.h"
 
-uint8_t rxdata[4]={0};
+uint8_t rxdat[4]={0};
+extern uint8_t rxflag;
 extern uint32_t target_rpm;
 /* 如果使用os,则包括下面的头文件即可. */
 #if SYS_SUPPORT_OS
@@ -126,7 +127,7 @@ void usart_init(uint32_t baudrate)
     HAL_UART_Init(&g_uart1_handle);                                           /* HAL_UART_Init()会使能UART1 */
 
     /* 该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 */
-    HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdata, 4);
+    HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 4);
 	//HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE); 
 }
 
@@ -174,6 +175,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     if (huart->Instance == USART_UX)                    /* 如果是串口1 */
     {
+		rxflag = 1;
         if ((g_usart_rx_sta & 0x8000) == 0)             /* 接收未完成 */
         {
             if (g_usart_rx_sta & 0x4000)                /* 接收到了0x0d（即回车键） */
@@ -203,8 +205,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
                 }
             }
         }
-		target_rpm = (rxdata[3]-'0')+(rxdata[2]-'0')*10+(rxdata[1]-'0')*100+(rxdata[0]-'0')*1000;
-		HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdata, 4);
+		target_rpm = (rxdat[3]-'0')+(rxdat[2]-'0')*10+(rxdat[1]-'0')*100+(rxdat[0]-'0')*1000;
+		HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 4);
         //HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE);
     }
 }

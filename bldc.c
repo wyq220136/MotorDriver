@@ -195,8 +195,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim->Instance == TIM4)
 	{
 		//getEncode(i);
+		//angle=(float)(AS5047_read(ANGLEUNC));
+		
 		//counter = 0;
-		getAngle();
+		/*getAngle();
 		angle = LowPass(angle);
 		if(Is_Forward())
 		{
@@ -225,10 +227,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
 			
 		//printf("adc1:%d, adc2:%d, adc3:%d\n", g_adc_ave[0], g_adc_ave[1], g_adc_ave[2]);
-		motor.pulsea = (__Constrain(volt_out.a_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
-		motor.pulseb = (__Constrain(volt_out.b_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
-		motor.pulsec = (__Constrain(volt_out.c_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
-		}
+		//motor.pulsea = (__Constrain(volt_out.a_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		//motor.pulseb = (__Constrain(volt_out.b_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		//motor.pulsec = (__Constrain(volt_out.c_out/V_SOURCE)+V_OFFSET)*(TIMARR+1);
+		}*/
 	}
 }
 

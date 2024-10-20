@@ -43,15 +43,6 @@
   */
 
 /**
-  * @brief  Initializes the Global MSP.
-  * @retval None
-  */
-void HAL_MspInit(void)
-{
-
-}
-
-/**
   * @brief  DeInitializes the Global MSP.
   * @retval None
   */

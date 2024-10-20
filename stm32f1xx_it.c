@@ -38,6 +38,7 @@
 /* Private variables ---------------------------------------------------------*/
 extern ADC_HandleTypeDef    AdcHandle;
 extern TIM_HandleTypeDef    TIM2_Handler, htim3, htim4;
+extern SPI_HandleTypeDef hspi1;
 extern uint32_t counter;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -197,5 +198,12 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&htim4);
+}
+
+void SPI1_IRQHandler(void)
+{
+
+  HAL_SPI_IRQHandler(&hspi1);
+
 }
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
