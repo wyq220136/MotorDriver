@@ -26,10 +26,12 @@
 
 #include "sys.h"
 #include "usart.h"
+#include "cfg.h"
 
-uint8_t rxdat[4]={0};
+uint8_t rxdat[5]={0};
 extern uint8_t rxflag;
 extern uint32_t target_rpm;
+extern motor_ctrl motor;
 /* 如果使用os,则包括下面的头文件即可. */
 #if SYS_SUPPORT_OS
 #include "os.h" /* os 使用 */
@@ -127,7 +129,7 @@ void usart_init(uint32_t baudrate)
     HAL_UART_Init(&g_uart1_handle);                                           /* HAL_UART_Init()会使能UART1 */
 
     /* 该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 */
-    HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 4);
+    //HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 4);
 	//HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE); 
 }
 
@@ -176,39 +178,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     if (huart->Instance == USART_UX)                    /* 如果是串口1 */
     {
 		rxflag = 1;
-        if ((g_usart_rx_sta & 0x8000) == 0)             /* 接收未完成 */
-        {
-            if (g_usart_rx_sta & 0x4000)                /* 接收到了0x0d（即回车键） */
-            {
-                if (g_rx_buffer[0] != 0x0a)             /* 接收到的不是0x0a（即不是换行键） */
-                {
-                    g_usart_rx_sta = 0;                 /* 接收错误,重新开始 */
-                }
-                else                                    /* 接收到的是0x0a（即换行键） */
-                {
-                    g_usart_rx_sta |= 0x8000;           /* 接收完成了 */
-                }
-            }
-            else                                        /* 还没收到0X0d（即回车键） */
-            {
-                if (g_rx_buffer[0] == 0x0d)
-                    g_usart_rx_sta |= 0x4000;
-                else
-                {
-                    g_usart_rx_buf[g_usart_rx_sta & 0X3FFF] = g_rx_buffer[0];
-                    g_usart_rx_sta++;
-
-                    if (g_usart_rx_sta > (USART_REC_LEN - 1))
-                    {
-                        g_usart_rx_sta = 0;             /* 接收数据错误,重新开始接收 */
-                    }
-                }
-            }
-        }
 		target_rpm = (rxdat[3]-'0')+(rxdat[2]-'0')*10+(rxdat[1]-'0')*100+(rxdat[0]-'0')*1000;
-		HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 4);
-        //HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t *)g_rx_buffer, RXBUFFERSIZE);
+		while(HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5)!=HAL_OK)
+		{
+			g_uart1_handle.RxState = HAL_UART_STATE_READY;
+			__HAL_UNLOCK(&g_uart1_handle);
+			
+			__HAL_UART_CLEAR_FLAG(&g_uart1_handle, UART_FLAG_PE);
+			__HAL_UART_CLEAR_FLAG(&g_uart1_handle, UART_FLAG_FE);
+			__HAL_UART_CLEAR_FLAG(&g_uart1_handle, UART_FLAG_NE);
+			__HAL_UART_CLEAR_FLAG(&g_uart1_handle, UART_FLAG_ORE);
+		}
+		if(rxdat[4] == '1')
+			motor.dir = FORWARD;
+		else
+			motor.dir = BACKWARD;
     }
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+	//HAL_UART_Init(&g_uart1_handle);
+	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
 }
 
 /**

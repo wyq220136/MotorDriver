@@ -34,6 +34,7 @@ typedef struct
 	float alpha;
 	float s_last;
 	float s_now;
+	uint8_t trig;
 }Filt;
 
 void ParkConv(void);

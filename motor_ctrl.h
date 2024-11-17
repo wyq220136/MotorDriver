@@ -2,8 +2,8 @@
 #define MOTOR_CTRL_H
 #include "stm32f1xx_hal.h"
 
-#define Kp 0.15
-#define Ki  0.07
+#define Kp 0.0041
+#define Ki  0.0019
 #define Kd 0.0
 
 //这是一个PID控制器
@@ -57,7 +57,7 @@ void Enc_Rpm(void);
 void Rpm_Speed(void);
 void Speed_Rpm(void);
 void Pid_Conf(pid*k);
-void Pid_Cal(pid*k, int16_t e);
+void Pid_Cal(pid*k, float e);
 void cal_motor(void);
 void adrcConf(adrc*k);
 void adrcRSET(adrc*k);

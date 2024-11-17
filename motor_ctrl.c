@@ -16,8 +16,9 @@ uint32_t normal_cnt = 0;
 uint32_t speed_actual, target_speed;
 
 long long encoder_num = 0;//用于记录霍尔编码器码数
-uint32_t rpm, target_rpm;
+uint32_t rpm=0, target_rpm=0;
 float target_angle;
+extern uint8_t rxdat[5];
 
 adrc Adrc1, Adrc2, Adrc3;
 pid Pid;
@@ -48,7 +49,9 @@ void Rpm_Speed(void)
 void Speed_Rpm(void)
 {
 	//target_rpm = target_speed / (2*RADIUS*PI);
-	target_angle = target_rpm*360/1000;//每毫秒应该转过多少角度
+	target_angle = (float)target_rpm*6/1000;//每毫秒应该转过多少角度
+	if(motor.dir == BACKWARD)
+		target_angle = -target_angle;
 }
 
 //PID控制器初始化函数
@@ -69,7 +72,7 @@ void Pid_Conf(pid*k)
 }
 
 //PID控制器输出计算
-void Pid_Cal(pid*k, int16_t e)
+void Pid_Cal(pid*k, float e)
 {
 	k->error_t_prim = k->error_t;
 	k->error_t = k->error;

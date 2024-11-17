@@ -48,4 +48,5 @@ void FiltConf(void)
 	filter.alpha = 0.5;
 	filter.s_last = 0;
 	filter.s_now = 0;
+	filter.trig = 0;
 }

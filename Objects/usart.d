@@ -32,3 +32,13 @@
 .\objects\usart.o: .\lib\Inc\stm32f1xx_hal_uart.h
 .\objects\usart.o: usart.h
 .\objects\usart.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: cfg.h
+.\objects\usart.o: init.h
+.\objects\usart.o: bldc.h
+.\objects\usart.o: motor_ctrl.h
+.\objects\usart.o: measure.h
+.\objects\usart.o: comm.h
+.\objects\usart.o: foc.h
+.\objects\usart.o: cfg.h
+.\objects\usart.o: encode.h
+.\objects\usart.o: delay.h

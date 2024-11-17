@@ -40,6 +40,7 @@ extern ADC_HandleTypeDef    AdcHandle;
 extern TIM_HandleTypeDef    TIM2_Handler, htim3, htim4;
 extern SPI_HandleTypeDef hspi1;
 extern uint32_t counter;
+uint8_t roundcnt = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -157,9 +158,12 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI15_10_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
   //HAL_GPIO_EXTI_IRQHandler(USER_BUTTON_PIN);
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_6);
+	roundcnt ++;
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_6);
 }
 
 

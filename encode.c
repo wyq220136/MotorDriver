@@ -3,6 +3,7 @@
 
 SPI_HandleTypeDef hspi1;
 float angle = 0.0;
+extern float last_angle;
 
 void MX_SPI1_Init(void)
 {
@@ -92,6 +93,8 @@ uint16_t AS5047_read(uint16_t add)
 
 void getAngle(void)
 {
+	last_angle = fmod(angle, 360.0);
 	angle=(float)(AS5047_read(ANGLEUNC));
+	angle = LowPass(angle);
 	angle = angle/16384*360;
 }

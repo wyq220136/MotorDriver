@@ -123,7 +123,7 @@ void TIM_Init(void)
 	htim4.Init.Prescaler = 7200-1;
 	htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim4.Init.Period = 20-1; //2ms采样一次转速
+	htim4.Init.Period = 10-1; //2ms采样一次转速
 
 	
 	HAL_TIM_Base_Init(&TIM2_Handler); 
@@ -231,7 +231,7 @@ void adc_dma_enable(uint16_t cndtr)
 /****************************************************************************************************
 以下为霍尔传感器信号输入捕获 2024.10.4
 ****************************************************************************************************/
-/*void capture_init(void)
+void capture_init(void)
 {
 	Cap_Tim_Init();
 
@@ -265,7 +265,21 @@ void Cap_Tim_Init(void)     //引脚映射到PA6
 	sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
 	
 	HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig);
-}*/
+}
+
+void rcnt(void) //初始化中断引脚，转一整圈触发一次
+{
+	GPIO_InitTypeDef gpio_init_struct;
+
+	gpio_init_struct.Pin = GPIO_PIN_6;
+	gpio_init_struct.Mode = GPIO_MODE_IT_RISING;
+	gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
+	gpio_init_struct.Pull = GPIO_PULLUP;
+	HAL_GPIO_Init(GPIO_LBridge, &gpio_init_struct);
+	
+	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+}
 
 void HAL_MspInit(void)
 {
@@ -291,4 +305,5 @@ void sys_init(void)
 	ctrl_Init();
 	adc_dma_init((uint32_t)&g_adc_raw);
 	adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
+	rcnt();
 }

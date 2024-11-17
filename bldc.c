@@ -15,8 +15,10 @@ extern adrc Adrc1, Adrc2, Adrc3;
 extern Foc motor_foc;
 extern uint8_t g_adc_dma_sta;
 extern uint16_t g_adc_ave[ADC_CH_NUM];
-
+extern Filt filter;
 float last_angle = 0.0;
+uint8_t last_sta = 0;
+
 
 pctr basic_ctrl[6] =
 {
@@ -52,16 +54,17 @@ uint8_t hallsensor(void)
 
 uint8_t Is_Forward(void)
 {
-	uint16_t idx;
+	/*uint16_t idx;
 	idx = (idx_f[motor.step_now]+5)%6;
-
-	if(forward[idx] == motor.step_last)
+	if(forward[idx] == motor.step_last)*/
+	if((angle>last_angle&&(angle-last_angle<320))|| last_angle - angle >=320)
 	{
 		return 1;//正转返回1
 	}
 	else
+	{
 		return 0;//倒转返回0
-
+	}
 }
 //鍏鎹㈠悜鍑芥暟
 void uhvl(void)
@@ -170,6 +173,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		if(motor.run_flag == START)    //鐢垫満澶勪簬杩愯鐘舵€佹墠浼氳鍙�
 		{
+			//last_sta = Is_Forward();
 			motor.step_last = motor.step_now;
 			motor.step_now = hallsensor();
 			if(motor.step_now >= 1 && motor.step_now <= 6)
@@ -194,30 +198,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	if(htim->Instance == TIM4)
 	{
-		//getEncode(i);
-		//angle=(float)(AS5047_read(ANGLEUNC));
-		
-		//counter = 0;
-		/*getAngle();
-		angle = LowPass(angle);
-		if(Is_Forward())
-		{
-			if(angle<last_angle)
-				motor_foc.theta = angle+360-last_angle;
-			else
-				motor_foc.theta = angle - last_angle;
-		}
-		else
-		{
-			if(angle>last_angle)
-				motor_foc.theta = angle-360-last_angle;
-			else
-				motor_foc.theta = angle - last_angle;
+		filter.trig = 1;
+		if((last_angle>angle)&&(last_angle - angle< 0.1)||(last_angle<angle)&&(angle-last_angle<0.1))
+			motor_foc.theta = 0;
+		else{
+			motor_foc.theta = angle - last_angle;
+			motor_foc.theta = motor_foc.theta/3;
 		}
 		cal_motor();
 		
 		//adc_ave_filter();
-		if(g_adc_dma_sta == 1)
+		/*if(g_adc_dma_sta == 1)
 		{
 		adc_ave_filter();
 		g_adc_dma_sta = 0;
