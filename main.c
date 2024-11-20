@@ -12,7 +12,6 @@ extern float angle, last_angle;
 extern pulse_volt volt_out;
 extern Filt filter;
 extern uint8_t rxdat[5];
-extern uint8_t roundcnt;
 
 uint8_t rxflag = 0;
 uint8_t tmp_test = 0;
@@ -35,14 +34,7 @@ int main(void)
 		{
 			filter.trig = 0;
 			getAngle();
-			if(Is_Forward())
-				angle += roundcnt*360.0;
-			else
-				angle -= roundcnt*360.0;
-			roundcnt = 0;
 		}
-		//tmp_test = Is_Forward();
-		//printf("round:%d\n", roundcnt);
 		printf("last:%f, angle:%f, theta:%f\n",last_angle, angle, motor_foc.theta);
 		HAL_Delay(5);
     }

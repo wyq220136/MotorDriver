@@ -52,21 +52,21 @@ uint8_t hallsensor(void)
 	return state;
 }
 
+/********************************************************************
+方位判断函数，适用于单级对磁铁，返回0倒转，返回1正转，返回2认为静止
+********************************************************************/
 uint8_t Is_Forward(void)
 {
-	/*uint16_t idx;
-	idx = (idx_f[motor.step_now]+5)%6;
-	if(forward[idx] == motor.step_last)*/
-	if((angle>last_angle&&(angle-last_angle<320))|| last_angle - angle >=320)
-	{
-		return 1;//正转返回1
+	if(((angle>last_angle)&&(angle-last_angle<0.1))||((last_angle>angle)&&(last_angle-angle<0.1)))
+		return 2;
+	else{
+		if((angle>last_angle)||(last_angle-angle>300))
+			return 1;
 	}
-	else
-	{
-		return 0;//倒转返回0
-	}
+	return 0;
 }
-//鍏鎹㈠悜鍑芥暟
+
+
 void uhvl(void)
 {
 	TIM1_Handler.Instance->CCR4= motor.pulsea;
@@ -168,12 +168,11 @@ void Start_motor(void)
 *******************************************************************************/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	//uint8_t i;
+	uint8_t k1;
 	if(htim->Instance == TIM2)
 	{
 		if(motor.run_flag == START)    //鐢垫満澶勪簬杩愯鐘舵€佹墠浼氳鍙�
 		{
-			//last_sta = Is_Forward();
 			motor.step_last = motor.step_now;
 			motor.step_now = hallsensor();
 			if(motor.step_now >= 1 && motor.step_now <= 6)
@@ -189,21 +188,33 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 		}
 	}
-	if(htim->Instance == TIM3)
+	/*if(htim->Instance == TIM3)
 	{
 		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim3))
 			counter--;
 		else
 			counter++;
-	}
+	}*/
 	if(htim->Instance == TIM4)
 	{
 		filter.trig = 1;
-		if((last_angle>angle)&&(last_angle - angle< 0.1)||(last_angle<angle)&&(angle-last_angle<0.1))
-			motor_foc.theta = 0;
+		k1 = Is_Forward();
+		if(2 == k1)
+			motor_foc.theta = 0.0;
 		else{
-			motor_foc.theta = angle - last_angle;
-			motor_foc.theta = motor_foc.theta/3;
+			if(1 == k1)
+			{
+				if(angle>last_angle)
+					motor_foc.theta = angle - last_angle;
+				else
+					motor_foc.theta = angle - last_angle + 360.0;
+			}
+			else{
+				if(angle<last_angle)
+					motor_foc.theta = last_angle - angle;
+				else
+					motor_foc.theta = last_angle - angle + 360.0;
+			}
 		}
 		cal_motor();
 		
@@ -236,9 +247,9 @@ void getEncode(uint8_t i)
 
 void gtimRestart(void) 
 { 
-	 __HAL_TIM_DISABLE(&htim3); /* 鍏抽棴瀹氭椂鍣� TIMX */ 
-	 counter = 0; /* 绱姞鍣ㄦ竻闆� */ 
-	 __HAL_TIM_SET_COUNTER(&htim3, 0); /* 璁℃暟鍣ㄦ竻闆� */ 
-	 __HAL_TIM_ENABLE(&htim3); /* 浣胯兘瀹氭椂鍣� TIMX */ 
+	 __HAL_TIM_DISABLE(&htim3);
+	 counter = 0;
+	 __HAL_TIM_SET_COUNTER(&htim3, 0);
+	 __HAL_TIM_ENABLE(&htim3);
 
 } 

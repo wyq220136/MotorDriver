@@ -93,7 +93,7 @@ uint16_t AS5047_read(uint16_t add)
 
 void getAngle(void)
 {
-	last_angle = fmod(angle, 360.0);
+	last_angle = angle;
 	angle=(float)(AS5047_read(ANGLEUNC));
 	angle = LowPass(angle);
 	angle = angle/16384*360;

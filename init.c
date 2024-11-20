@@ -231,7 +231,7 @@ void adc_dma_enable(uint16_t cndtr)
 /****************************************************************************************************
 以下为霍尔传感器信号输入捕获 2024.10.4
 ****************************************************************************************************/
-void capture_init(void)
+/*void capture_init(void)
 {
 	Cap_Tim_Init();
 
@@ -279,7 +279,7 @@ void rcnt(void) //初始化中断引脚，转一整圈触发一次
 	
 	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
 	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-}
+}*/
 
 void HAL_MspInit(void)
 {
@@ -305,5 +305,6 @@ void sys_init(void)
 	ctrl_Init();
 	adc_dma_init((uint32_t)&g_adc_raw);
 	adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
-	rcnt();
+	//rcnt();
+	//Cap_Tim_Init();
 }
