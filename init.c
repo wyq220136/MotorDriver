@@ -116,14 +116,14 @@ void TIM_Init(void)
 	TIM2_Handler.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	
 	TIM2_Handler.Init.CounterMode = TIM_COUNTERMODE_UP;
-	TIM2_Handler.Init.Period = 10-1; //10us读取一次六步换向
+	TIM2_Handler.Init.Period = 10-1; //10us为最小计数单位
 	
 	
 	htim4.Instance = TIM4;
-	htim4.Init.Prescaler = 7200-1;
+	htim4.Init.Prescaler = 360-1;
 	htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim4.Init.Period = 10-1; //2ms采样一次转速
+	htim4.Init.Period = 50-1; //500us采样一次转速
 
 	
 	HAL_TIM_Base_Init(&TIM2_Handler); 
@@ -284,10 +284,10 @@ void rcnt(void) //初始化中断引脚，转一整圈触发一次
 void HAL_MspInit(void)
 {
 
-  __HAL_RCC_AFIO_CLK_ENABLE();
-  __HAL_RCC_PWR_CLK_ENABLE();
-
-__HAL_AFIO_REMAP_SWJ_DISABLE();
+	__HAL_RCC_AFIO_CLK_ENABLE();
+	__HAL_RCC_PWR_CLK_ENABLE();
+	
+	__HAL_AFIO_REMAP_SWJ_DISABLE();
 }
 
 void sys_init(void)
@@ -301,9 +301,10 @@ void sys_init(void)
 	sys_stm32_clock_init(RCC_PLL_MUL9);
     delay_init(72);
     usart_init(115200);
-	MX_SPI1_Init();
 	ctrl_Init();
 	adc_dma_init((uint32_t)&g_adc_raw);
 	adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
+	Cap_Tim_Init();
 	rcnt();
+	
 }

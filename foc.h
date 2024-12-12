@@ -37,6 +37,8 @@ typedef struct
 	uint8_t trig;
 }Filt;
 
+
+uint8_t phase_check(uint8_t a, uint8_t b);
 void ParkConv(void);
 void ClarkConv(void);
 void ParkConvT(void);

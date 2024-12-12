@@ -24,7 +24,6 @@ void vhwl(void);
 void whul(void);
 void whvl(void);
 void Stop_motor(void);
-void Start_motor(void);
 uint8_t Is_Forward(void);
 void getEncode(uint8_t k);
 void gtimRestart(void);

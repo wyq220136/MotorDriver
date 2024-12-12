@@ -10,12 +10,8 @@
 *************************************************************************/
 extern motor_ctrl motor;
 extern Foc motor_foc;
-uint16_t counter = 0;
-uint8_t start_cnt = 0;//上升沿捕获标志位，捕获到上升沿置1，下降沿置0
-uint32_t normal_cnt = 0;
 uint32_t speed_actual, target_speed;
 
-long long encoder_num = 0;//用于记录霍尔编码器码数
 uint32_t rpm=0, target_rpm=0;
 float target_angle;
 extern uint8_t rxdat[5];
@@ -31,12 +27,6 @@ void ctrl_Init(void)
 	adrcConf(&Adrc3);
 	Pid_Conf(&Pid);
 	FiltConf();
-}
-
-//编码速度转换为转速
-void Enc_Rpm(void)
-{
-	rpm = encoder_num / POLE_NUM;
 }
 
 //转速转换为实际速度，单位m/s
@@ -90,7 +80,10 @@ void cal_motor(void)
 	
 	Speed_Rpm();
 	//Enc_Rpm();
-	
+	if(target_angle == 0)
+		motor.run_flag = STOP;
+	else
+		motor.run_flag = START;
 	float err = target_angle - motor_foc.theta;
 	Pid_Cal(&Pid, err);
 	motor_foc.motor_p.Iq = Pid.pid_out;

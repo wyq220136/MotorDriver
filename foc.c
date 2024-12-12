@@ -25,10 +25,10 @@ void ParkConvT(void)
 
 void ClarkConvT(void)
 {
-	motor_foc.motor_r.Ia = motor_foc.motor_c.Ialpha;
-	motor_foc.motor_r.Ib = -motor_foc.motor_c.Ialpha/2+motor_foc.motor_c.Ibeta*SQRT3/2;
-	motor_foc.motor_r.Ic = -motor_foc.motor_c.Ialpha/2-motor_foc.motor_c.Ibeta*SQRT3/2;
-	
+	motor_foc.motor_r.Ia = 2*(motor_foc.motor_c.Ialpha)/3;
+	motor_foc.motor_r.Ib = 2*(-motor_foc.motor_c.Ialpha/2+motor_foc.motor_c.Ibeta*SQRT3/2)/3;
+	motor_foc.motor_r.Ic = 2*(-motor_foc.motor_c.Ialpha/2-motor_foc.motor_c.Ibeta*SQRT3/2)/3;
+		
 	motor.pulsea = (__Constrain(motor_foc.motor_r.Ia/V_SOURCE)+V_OFFSET)*(TIMARR+1);
 	motor.pulseb = (__Constrain(motor_foc.motor_r.Ib/V_SOURCE)+V_OFFSET)*(TIMARR+1);
 	motor.pulsec = (__Constrain(motor_foc.motor_r.Ic/V_SOURCE)+V_OFFSET)*(TIMARR+1);
@@ -50,3 +50,4 @@ void FiltConf(void)
 	filter.s_now = 0;
 	filter.trig = 0;
 }
+

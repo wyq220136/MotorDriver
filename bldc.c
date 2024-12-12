@@ -52,20 +52,6 @@ uint8_t hallsensor(void)
 	return state;
 }
 
-uint8_t Is_Forward(void)
-{
-	/*uint16_t idx;
-	idx = (idx_f[motor.step_now]+5)%6;
-	if(forward[idx] == motor.step_last)*/
-	if((angle>last_angle&&(angle-last_angle<320))|| last_angle - angle >=320)
-	{
-		return 1;//正转返回1
-	}
-	else
-	{
-		return 0;//倒转返回0
-	}
-}
 //鍏鎹㈠悜鍑芥暟
 void uhvl(void)
 {
@@ -135,45 +121,29 @@ void whvl(void)
 
 void Stop_motor(void)   //閫氳繃灏咵N_GATE浠庨珮缃綆鍏虫柇妗ヨ噦
 {
-	SHUTOFF;
+	//SHUTOFF;
 	
 	TIM1_Handler.Instance->CCR4 = 0;
 	TIM1_Handler.Instance->CCR2 = 0;
 	TIM1_Handler.Instance->CCR3 = 0;
 	
-	UL_OFF;
-	VL_OFF;
-	WL_OFF;
+	UL_ON;
+	VL_ON;
+	WL_ON;
 	
-	motor.run_flag = STOP;
+	//motor.run_flag = STOP;
 }
 
-void Start_motor(void)
-{
-		SHUTON;
-		
-		TIM1_Handler.Instance->CCR4 = 0;
-		TIM1_Handler.Instance->CCR2 = 0;
-		TIM1_Handler.Instance->CCR3 = 0;
-		
-		UL_OFF;
-		VL_OFF;
-		WL_OFF;
-		
-		motor.run_flag = START;
-}
 
 /*******************************************************************************
-瀹氭椂鍣ㄤ腑鏂洖璋冨嚱鏁�
+定时器回调函数，进行六步换相和数据读取
 *******************************************************************************/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	//uint8_t i;
 	if(htim->Instance == TIM2)
 	{
-		if(motor.run_flag == START)    //鐢垫満澶勪簬杩愯鐘舵€佹墠浼氳鍙�
+		if(motor.run_flag == START)    //只有电机运行状态下才读取
 		{
-			//last_sta = Is_Forward();
 			motor.step_last = motor.step_now;
 			motor.step_now = hallsensor();
 			if(motor.step_now >= 1 && motor.step_now <= 6)
@@ -188,23 +158,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				}
 			}
 		}
-	}
-	if(htim->Instance == TIM3)
-	{
-		if(__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim3))
-			counter--;
 		else
-			counter++;
+			Stop_motor();
 	}
 	if(htim->Instance == TIM4)
 	{
-		filter.trig = 1;
-		if((last_angle>angle)&&(last_angle - angle< 0.1)||(last_angle<angle)&&(angle-last_angle<0.1))
-			motor_foc.theta = 0;
-		else{
-			motor_foc.theta = angle - last_angle;
-			motor_foc.theta = motor_foc.theta/3;
-		}
+		cnt_all = __HAL_TIM_GET_COUNTER(&htim3);
+		getAngle();
 		cal_motor();
 		
 		//adc_ave_filter();
@@ -224,21 +184,3 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}*/
 	}
 }
-
-void getEncode(uint8_t i)
-{
-	cnt_all = __HAL_TIM_GET_COUNTER(&htim3);
-	cnt_all += counter*65536;
-	cnt_all -= last_cnt;
-	last_cnt = __HAL_TIM_GET_COUNTER(&htim3);
-	cnt_all = cnt_all*3000/ENC_OLD;
-}
-
-void gtimRestart(void) 
-{ 
-	 __HAL_TIM_DISABLE(&htim3); /* 鍏抽棴瀹氭椂鍣� TIMX */ 
-	 counter = 0; /* 绱姞鍣ㄦ竻闆� */ 
-	 __HAL_TIM_SET_COUNTER(&htim3, 0); /* 璁℃暟鍣ㄦ竻闆� */ 
-	 __HAL_TIM_ENABLE(&htim3); /* 浣胯兘瀹氭椂鍣� TIMX */ 
-
-} 

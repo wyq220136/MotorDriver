@@ -194,6 +194,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		else
 			motor.dir = BACKWARD;
     }
+	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)

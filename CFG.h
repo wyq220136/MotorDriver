@@ -93,6 +93,13 @@
 #define KPADRC 500
 #define KDADRC 45
 
+#define ENCODE_PORT GPIOA
+#define PHASE_A GPIO_PIN_6
+#define PHASE_B GPIO_PIN_7
+
+#define BRAKE_PORT GPIOA
+#define BRAKE_PIN GPIO_PIN_5
+
 typedef void(*pctr) (void);
 
 #endif
