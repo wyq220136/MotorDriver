@@ -110,32 +110,40 @@ void TIM_Init(void)
 {
 	__HAL_RCC_TIM2_CLK_ENABLE();
 	__HAL_RCC_TIM4_CLK_ENABLE();
+	__HAL_RCC_TIM5_CLK_ENABLE();
 	
 	TIM2_Handler.Instance = TIM2;
-	TIM2_Handler.Init.Prescaler = 72-1;
+	TIM2_Handler.Init.Prescaler = 36-1;
 	TIM2_Handler.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-	
 	TIM2_Handler.Init.CounterMode = TIM_COUNTERMODE_UP;
-	TIM2_Handler.Init.Period = 10-1; //10us为最小计数单位
-	
+	TIM2_Handler.Init.Period = 10-1; //5us为最小计数单位
 	
 	htim4.Instance = TIM4;
-	htim4.Init.Prescaler = 360-1;
+	htim4.Init.Prescaler = 720-1;
 	htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim4.Init.Period = 50-1; //500us采样一次转速
-
+	htim4.Init.Period = 100-1; //1ms计算一次PID和ADRC
+	
+	htim5.Instance = TIM5;
+	htim5.Init.Prescaler = 72-1;
+	htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+	htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
+	htim5.Init.Period = 40-1; //40us采样一次位置
 	
 	HAL_TIM_Base_Init(&TIM2_Handler); 
 	HAL_TIM_Base_Init(&htim4);
+	HAL_TIM_Base_Init(&htim5);
 	
-	HAL_NVIC_SetPriority(TIM2_IRQn, 1, 0);
+	HAL_NVIC_SetPriority(TIM2_IRQn, 0, 1);
 	HAL_NVIC_EnableIRQ(TIM2_IRQn);
-	HAL_NVIC_SetPriority(TIM4_IRQn, 2, 1);
+	HAL_NVIC_SetPriority(TIM4_IRQn, 3, 1);
 	HAL_NVIC_EnableIRQ(TIM4_IRQn);
+	HAL_NVIC_SetPriority(TIM5_IRQn, 2, 1);
+	HAL_NVIC_EnableIRQ(TIM5_IRQn);
 	
 	HAL_TIM_Base_Start_IT(&TIM2_Handler); 
 	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_Base_Start_IT(&htim5);
 }
 
 

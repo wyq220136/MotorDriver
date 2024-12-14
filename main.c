@@ -11,25 +11,22 @@ extern float target_angle;
 extern pulse_volt volt_out;
 extern Filt filter;
 extern uint8_t rxdat[5];
-extern uint8_t roundcnt;
 
 uint8_t rxflag = 0;
-uint8_t tmp_test = 0;
 extern int32_t cnt_all;
 
 int main(void)
 {
 	sys_init();
-	//target_rpm = 0;
 	HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
 	
-	motor.dir = FORWARD;
+	//motor.dir = FORWARD;
 	motor.run_flag = START;
 	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
     while (1)
     {
-		printf("tar:%f, rpm:%f\n", target_angle, motor_foc.theta);
-		//HAL_Delay(5);
+		printf("tar:%f, a:%f\n", target_angle, motor_foc.theta);
+		HAL_Delay(5);
     }
 }
 

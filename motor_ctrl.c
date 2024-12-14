@@ -77,18 +77,11 @@ void Pid_Cal(pid*k, float e)
 
 void cal_motor(void)
 {
-	
 	Speed_Rpm();
 	//Enc_Rpm();
-	if(target_angle == 0)
-		motor.run_flag = STOP;
-	else
-		motor.run_flag = START;
 	float err = target_angle - motor_foc.theta;
 	Pid_Cal(&Pid, err);
 	motor_foc.motor_p.Iq = Pid.pid_out;
-	ParkConvT();
-	ClarkConvT();
 }
 
 void adrcConf(adrc*k)

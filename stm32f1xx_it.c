@@ -37,8 +37,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 extern ADC_HandleTypeDef    AdcHandle;
-extern TIM_HandleTypeDef    TIM2_Handler, htim3, htim4;
-extern SPI_HandleTypeDef hspi1;
+extern TIM_HandleTypeDef    TIM2_Handler, htim3, htim4, htim5;
 extern uint32_t counter;
 uint8_t roundcnt = 0;
 /* Private function prototypes -----------------------------------------------*/
@@ -204,10 +203,8 @@ void TIM4_IRQHandler(void)
 	HAL_TIM_IRQHandler(&htim4);
 }
 
-void SPI1_IRQHandler(void)
+void TIM5_IRQHandler(void)
 {
-
-  HAL_SPI_IRQHandler(&hspi1);
-
+	HAL_TIM_IRQHandler(&htim5);
 }
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

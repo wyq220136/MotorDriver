@@ -2,7 +2,7 @@
 #define BLDC_H
 #include "stm32f1xx_hal.h"
 /******************************************
-定义电机驱动结构体，用于设置PWM输出脉宽和电机转动方向担后续可以添加更多参数
+鐢垫満鍩烘湰椹卞姩閰嶇疆鏂囦欢
 ******************************************/
 typedef struct
 {
@@ -15,14 +15,12 @@ typedef struct
 	__IO uint8_t run_flag;
 }motor_ctrl;
 
-uint8_t hallsensor(void);
-
-void uhvl(void);
-void uhwl(void);
-void vhul(void);
-void vhwl(void);
-void whul(void);
-void whvl(void);
+void phase_zero(void);
+void phase_one(void);
+void phase_two(void);
+void phase_three(void);
+void phase_four(void);
+void phase_five(void);
 void Stop_motor(void);
 uint8_t Is_Forward(void);
 void getEncode(uint8_t k);

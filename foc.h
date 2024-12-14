@@ -2,6 +2,7 @@
 #define FOC_H
 
 #include "cfg.h"
+
 typedef struct
 {
 	float Iq;
@@ -26,7 +27,14 @@ typedef struct
 	float theta;
 	Park motor_p;
 	Clark motor_c;
-	Raw motor_r;	
+	Raw motor_r;
+	uint8_t sector;
+	float atan_now;
+	float T1;
+	float T2;
+	float angle;
+	float cal_angle;
+	uint8_t idx1;
 }Foc;
 
 typedef struct
@@ -39,10 +47,8 @@ typedef struct
 
 
 uint8_t phase_check(uint8_t a, uint8_t b);
-void ParkConv(void);
-void ClarkConv(void);
 void ParkConvT(void);
-void ClarkConvT(void);
+void SVPWM(void);
 float LowPass(float x);
 void FiltConf(void);
 
