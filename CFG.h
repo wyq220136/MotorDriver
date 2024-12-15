@@ -80,7 +80,7 @@
 #define POLE_NUM 8 //maxon极对数
 #define ENC_OLD 51 //老电机一圈码数
 #define THETA_MAX 45 //最大回正力矩对应的角度
-#define V_OFFSET 0.375//防止FOC陷入死区，零点加入偏置
+#define V_OFFSET 0.12//防止FOC陷入死区，零点加入偏置
 //#define KE 24 //电机反电动势常数
 #define PROPA_PARAM 8 //相电压采样比
 

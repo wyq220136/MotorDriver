@@ -88,7 +88,7 @@ void cal_motor(void)
 	Pid_Cal(&Pid, err);
 	motor_foc.motor_p.Iq = Pid.pid_out;
 	ParkConvT();
-	ClarkConvT();
+	SVPWM();
 }
 
 void adrcConf(adrc*k)

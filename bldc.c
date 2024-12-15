@@ -121,8 +121,6 @@ void whvl(void)
 
 void Stop_motor(void)   //閫氳繃灏咵N_GATE浠庨珮缃綆鍏虫柇妗ヨ噦
 {
-	//SHUTOFF;
-	
 	TIM1_Handler.Instance->CCR4 = 0;
 	TIM1_Handler.Instance->CCR2 = 0;
 	TIM1_Handler.Instance->CCR3 = 0;
@@ -130,8 +128,7 @@ void Stop_motor(void)   //閫氳繃灏咵N_GATE浠庨珮缃綆鍏虫柇妗ヨ
 	UL_ON;
 	VL_ON;
 	WL_ON;
-	
-	//motor.run_flag = STOP;
+
 }
 
 

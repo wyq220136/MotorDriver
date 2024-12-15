@@ -2,7 +2,7 @@
 #define MOTOR_CTRL_H
 #include "stm32f1xx_hal.h"
 
-#define Kp 0.0041
+#define Kp 0.41
 #define Ki  0.0019
 #define Kd 0.0
 

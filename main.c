@@ -28,8 +28,8 @@ int main(void)
 	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
     while (1)
     {
-		printf("tar:%f, rpm:%f\n", target_angle, motor_foc.theta);
-		//HAL_Delay(5);
+		printf("%f, %f\n", target_angle, motor_foc.T1);
+		HAL_Delay(5);
     }
 }
 
