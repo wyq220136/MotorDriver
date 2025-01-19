@@ -73,6 +73,7 @@
 ".\objects\usart.o"
 ".\objects\foc.o"
 ".\objects\encode.o"
+".\objects\uart_dma.o"
 --strict --scatter ".\Objects\MotorDriver.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

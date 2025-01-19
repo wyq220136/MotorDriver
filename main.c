@@ -25,7 +25,7 @@ int main(void)
 	
 	motor.dir = FORWARD;
 	motor.run_flag = START;
-	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
+	//HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
     while (1)
     {
 		printf("%f, %f\n", target_angle, motor_foc.T1);

@@ -210,4 +210,6 @@ void SPI1_IRQHandler(void)
   HAL_SPI_IRQHandler(&hspi1);
 
 }
+
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

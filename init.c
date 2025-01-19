@@ -1,7 +1,7 @@
 #include "stm32f1xx_hal.h"
 #include "cfg.h"
 #include "encode.h"
-
+#include "uart_dma.h"
 /******************************************************************************
 2024.8.17 负责人：wyq
 这个文件完成系统初始化
@@ -306,5 +306,5 @@ void sys_init(void)
 	adc_dma_enable(ADC_CH_NUM*ADC_MEM_NUM);
 	Cap_Tim_Init();
 	rcnt();
-	
+	dma_init(DMA1_Channel4);
 }

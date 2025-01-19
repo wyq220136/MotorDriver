@@ -77,7 +77,6 @@ void Pid_Cal(pid*k, float e)
 
 void cal_motor(void)
 {
-	
 	Speed_Rpm();
 	//Enc_Rpm();
 	if(target_angle == 0)

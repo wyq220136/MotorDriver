@@ -42,3 +42,4 @@
 .\objects\usart.o: cfg.h
 .\objects\usart.o: encode.h
 .\objects\usart.o: delay.h
+.\objects\usart.o: uart_dma.h

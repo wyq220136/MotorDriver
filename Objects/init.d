@@ -42,3 +42,4 @@
 .\objects\init.o: sys.h
 .\objects\init.o: usart.h
 .\objects\init.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\init.o: uart_dma.h

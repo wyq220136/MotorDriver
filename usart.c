@@ -27,6 +27,7 @@
 #include "sys.h"
 #include "usart.h"
 #include "cfg.h"
+#include "uart_dma.h"
 
 uint8_t rxdat[5]={0};
 extern uint8_t rxflag;
@@ -175,7 +176,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    if (huart->Instance == USART_UX)                    /* 如果是串口1 */
+    /*if (huart->Instance == USART_UX)
     {
 		rxflag = 1;
 		target_rpm = (rxdat[3]-'0')+(rxdat[2]-'0')*10+(rxdat[1]-'0')*100+(rxdat[0]-'0')*1000;
@@ -194,7 +195,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		else
 			motor.dir = BACKWARD;
     }
-	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
+	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);*/
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
@@ -210,17 +211,25 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
  */
 void USART_UX_IRQHandler(void)
 {
-#if SYS_SUPPORT_OS                          /* 使用OS */
+/*#if SYS_SUPPORT_OS
     OSIntEnter();    
 #endif
 
-    HAL_UART_IRQHandler(&g_uart1_handle);   /* 调用HAL库中断处理公用函数 */
+    HAL_UART_IRQHandler(&g_uart1_handle);  
 
-#if SYS_SUPPORT_OS                          /* 使用OS */
+#if SYS_SUPPORT_OS
     OSIntExit();
-#endif
-
+#endif*/
+	if (__HAL_UART_GET_FLAG(&g_uart1_handle, UART_FLAG_IDLE) != RESET){
+        __HAL_UART_CLEAR_IDLEFLAG(&g_uart1_handle);
+        HAL_UART_DMAStop(&g_uart1_handle);
+		target_rpm = (rxdat[3]-'0')+(rxdat[2]-'0')*10+(rxdat[1]-'0')*100+(rxdat[0]-'0')*1000;
+		if(rxdat[4] == '1')
+			motor.dir = FORWARD;
+		else
+			motor.dir = BACKWARD;
+        HAL_UART_Receive_DMA(&g_uart1_handle, rxdat, UART2_RX_BUF_SIZE);
+    }
 }
-
 #endif
 
