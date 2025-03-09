@@ -1,46 +1,25 @@
-.\objects\net_pid.o: net_pid.c
-.\objects\net_pid.o: net_pid.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal.h
-.\objects\net_pid.o: .\user_inc\stm32f1xx_hal_conf.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_rcc.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_def.h
-.\objects\net_pid.o: .\user_inc\stm32f1xx.h
-.\objects\net_pid.o: .\user_inc\stm32f103xe.h
-.\objects\net_pid.o: .\STM32CubeF1-master\Drivers\CMSIS\Include\core_cm3.h
-.\objects\net_pid.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\net_pid.o: .\STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_version.h
-.\objects\net_pid.o: .\STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_compiler.h
-.\objects\net_pid.o: .\STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_armcc.h
-.\objects\net_pid.o: .\user_inc\system_stm32f1xx.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal.h
-.\objects\net_pid.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_rcc_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_gpio.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_gpio_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_dma.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_dma_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_cortex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_adc.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_adc_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_dac.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_dac_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_flash.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_flash_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_spi.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_tim.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_tim_ex.h
-.\objects\net_pid.o: .\lib\Inc\stm32f1xx_hal_uart.h
-.\objects\net_pid.o: cfg.h
-.\objects\net_pid.o: init.h
-.\objects\net_pid.o: bldc.h
-.\objects\net_pid.o: motor_ctrl.h
-.\objects\net_pid.o: measure.h
-.\objects\net_pid.o: comm.h
-.\objects\net_pid.o: foc.h
-.\objects\net_pid.o: cfg.h
-.\objects\net_pid.o: encode.h
-.\objects\net_pid.o: delay.h
-.\objects\net_pid.o: sys.h
-.\objects\net_pid.o: usart.h
-.\objects\net_pid.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\net_pid.o: D:\SRC\UV4\ARM\ARMCC\Bin\..\include\math.h
+./objects/net_pid.o: net_pid.c net_pid.h lib\Inc\stm32f1xx_hal.h \
+  user_inc\stm32f1xx_hal_conf.h lib\Inc\stm32f1xx_hal_rcc.h \
+  lib\Inc\stm32f1xx_hal_def.h user_inc\stm32f1xx.h \
+  user_inc\stm32f103xe.h \
+  STM32CubeF1-master\Drivers\CMSIS\Include\core_cm3.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_version.h \
+  STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_compiler.h \
+  STM32CubeF1-master\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  user_inc\system_stm32f1xx.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  lib\Inc\stm32f1xx_hal_rcc_ex.h lib\Inc\stm32f1xx_hal_gpio.h \
+  lib\Inc\stm32f1xx_hal_gpio_ex.h lib\Inc\stm32f1xx_hal_dma.h \
+  lib\Inc\stm32f1xx_hal_dma_ex.h lib\Inc\stm32f1xx_hal_cortex.h \
+  lib\Inc\stm32f1xx_hal_adc.h lib\Inc\stm32f1xx_hal_adc_ex.h \
+  lib\Inc\stm32f1xx_hal_dac.h lib\Inc\stm32f1xx_hal_dac_ex.h \
+  lib\Inc\stm32f1xx_hal_flash.h lib\Inc\stm32f1xx_hal_flash_ex.h \
+  lib\Inc\stm32f1xx_hal_spi.h lib\Inc\stm32f1xx_hal_tim.h \
+  lib\Inc\stm32f1xx_hal_tim_ex.h lib\Inc\stm32f1xx_hal_uart.h cfg.h \
+  init.h bldc.h motor_ctrl.h measure.h comm.h foc.h encode.h delay.h \
+  sys.h usart.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  D:\software\Keil\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h

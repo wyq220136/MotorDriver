@@ -10,13 +10,13 @@ uint8_t GetSector(float x, float y)
 	if(x == 0 && y == 0)
 		return 0;
 	motor_foc.atan_now = atan2(y, x);
-	if((0 <= motor_foc.atan_now)&&(PI/3 >= motor_foc.atan_now))
+	if((0 <= motor_foc.atan_now)&&(PI/3 > motor_foc.atan_now))
 		return 1;
-	if((PI/3 <= motor_foc.atan_now)&&(2*PI/3 >= motor_foc.atan_now))
+	if((PI/3 <= motor_foc.atan_now)&&(2*PI/3 > motor_foc.atan_now))
 		return 2;
-	if((PI*2/3 <= motor_foc.atan_now)&&(PI >= motor_foc.atan_now))
+	if((PI*2/3 <= motor_foc.atan_now)&&(PI > motor_foc.atan_now))
 		return 3;
-	if((-PI <= motor_foc.atan_now)&&(-2*PI/3 >= motor_foc.atan_now))
+	if((-PI <= motor_foc.atan_now)&&(-2*PI/3 > motor_foc.atan_now))
 		return 4;
 	if((-PI*2/3 <= motor_foc.atan_now)&&(-PI/3 >= motor_foc.atan_now))
 		return 5;
@@ -37,12 +37,19 @@ void ClarkConv(void)
 
 void ParkConvT(void)
 {
-	motor_foc.motor_c.Ialpha = -motor_foc.motor_p.Iq*sin(motor_foc.theta);
-	motor_foc.motor_c.Ibeta = motor_foc.motor_p.Iq*cos(motor_foc.theta);
+	float theta0 = motor_foc.theta/180*PI;
+	//motor_foc.theta = motor_foc.theta/180*PI;
+	float absIq = motor_foc.motor_p.Iq;
+	if(motor_foc.motor_p.Iq < 0){
+		absIq = -motor_foc.motor_p.Iq;
+	}
+	
+	motor_foc.motor_c.Ialpha = -motor_foc.motor_p.Iq*sin(theta0);
+	motor_foc.motor_c.Ibeta = motor_foc.motor_p.Iq*cos(theta0);
 	motor_foc.sector = GetSector(motor_foc.motor_c.Ialpha, motor_foc.motor_c.Ibeta);
-	motor_foc.cal_angle = (motor_foc.theta - 60*motor_foc.sector)/180*PI;
-	motor_foc.motor_c.Ialpha = -motor_foc.motor_p.Iq*sin(motor_foc.cal_angle);
-	motor_foc.motor_c.Ibeta = motor_foc.motor_p.Iq*cos(motor_foc.cal_angle);
+	motor_foc.cal_angle = (motor_foc.theta  - 60*(motor_foc.sector - 1) )/180*PI;
+	motor_foc.motor_c.Ialpha = absIq*sin(motor_foc.cal_angle);
+	motor_foc.motor_c.Ibeta = -absIq*cos(motor_foc.cal_angle);
 }
 
 void SVPWM(void)
@@ -50,7 +57,7 @@ void SVPWM(void)
 	motor_foc.T1 = (motor_foc.motor_c.Ialpha - motor_foc.motor_c.Ibeta/SQRT3)/V_SOURCE;
 	motor_foc.T2 = 2*motor_foc.motor_c.Ibeta/SQRT3/V_SOURCE;
 	
-	motor_foc.idx1 = motor_foc.sector-1;
+	motor_foc.idx1 = motor_foc.sector - 1;
 	
 	switch(motor_foc.idx1)
 	{

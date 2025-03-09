@@ -13,9 +13,14 @@ extern Filt filter;
 extern uint8_t rxdat[5];
 extern uint8_t roundcnt;
 
+
 uint8_t rxflag = 0;
 uint8_t tmp_test = 0;
+extern int32_t cnt_tmp;
 extern int32_t cnt_all;
+extern int32_t last_cnt;
+//
+extern float errr;
 
 int main(void)
 {
@@ -28,10 +33,18 @@ int main(void)
 	HAL_UART_Receive_IT(&g_uart1_handle, (uint8_t*)&rxdat, 5);
     while (1)
     {
-		printf("%f, %f\n", target_angle, motor_foc.T1);
+		//printf("%f, %f, %f\n", target_angle, motor_foc.T1, Pid.pid_out);
+			printf("%f, %f, %f, %f, %f, %d\n", motor_foc.theta, motor_foc.cal_angle, motor_foc.motor_p.Iq, motor_foc.T1, motor_foc.T2, motor_foc.sector);
+			//target_angle    °/ms   
 		HAL_Delay(5);
     }
 }
 
 
 
+
+
+
+
+
+//MotorDriver

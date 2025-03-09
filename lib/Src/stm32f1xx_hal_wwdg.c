@@ -29,7 +29,7 @@
     (+) WWDG clock (Hz) = PCLK1 / (4096 * Prescaler)
     (+) WWDG timeout (mS) = 1000 * Counter / WWDG clock
     (+) WWDG Counter refresh is allowed between the following limits :
-        (++) min time (mS) = 1000 * (Counter _ Window) / WWDG clock
+        (++) min time (mS) = 1000 * (Counter _` Window) / WWDG clock
         (++) max time (mS) = 1000 * (Counter _ 0x40) / WWDG clock
 
     (+) Min-max timeout value at 36 MHz(PCLK1): 910 us / 58.25 ms

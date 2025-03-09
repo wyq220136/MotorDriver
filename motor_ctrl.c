@@ -20,6 +20,9 @@ adrc Adrc1, Adrc2, Adrc3;
 pid Pid;
 pulse_volt volt_out = {0};
 
+//下面是qyh加的变量errr
+float errr;
+
 void ctrl_Init(void)
 {
 	adrcConf(&Adrc1);
@@ -39,7 +42,7 @@ void Rpm_Speed(void)
 void Speed_Rpm(void)
 {
 	//target_rpm = target_speed / (2*RADIUS*PI);
-	target_angle = (float)target_rpm*6/1000;//每毫秒应该转过多少角度
+	target_angle = (float)target_rpm*6/1000;//每毫秒应该转过多少角度   °/ms
 	if(motor.dir == BACKWARD)
 		target_angle = -target_angle;
 }
@@ -85,6 +88,7 @@ void cal_motor(void)
 	else
 		motor.run_flag = START;
 	float err = target_angle - motor_foc.theta;
+	errr = err;
 	Pid_Cal(&Pid, err);
 	motor_foc.motor_p.Iq = Pid.pid_out;
 	ParkConvT();

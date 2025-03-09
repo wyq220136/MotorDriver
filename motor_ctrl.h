@@ -2,8 +2,9 @@
 #define MOTOR_CTRL_H
 #include "stm32f1xx_hal.h"
 
-#define Kp 0.41
-#define Ki  0.0019
+#define Kp  0.01   //0.8，0.1，0.41不会到限幅      1，0.001，直接到9    0.01半9
+//0.05对应的Iq是0.05
+#define Ki  0   //0.0019
 #define Kd 0.0
 
 //这是一个PID控制器
@@ -13,7 +14,7 @@ typedef struct
 	float kb;
 	float kc;
 	
-	float error;
+	float error;	
 	float error_t;
 	float error_t_prim;
 	

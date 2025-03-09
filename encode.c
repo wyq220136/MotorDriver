@@ -9,10 +9,10 @@ extern Foc motor_foc;
 
 void getAngle(void)
 {
-	if(((cnt_all > last_cnt)&&(cnt_all - last_cnt < 20000))||(last_cnt - cnt_all>50000))
+	if(((cnt_all > last_cnt)&&(cnt_all - last_cnt < 20000))||(last_cnt - cnt_all > 50000))
 	{
 		if(last_cnt - cnt_all > 50000)
-			cnt_tmp = cnt_all+65535-last_cnt;
+			cnt_tmp = cnt_all + 65535 - last_cnt;
 		else
 			cnt_tmp = cnt_all - last_cnt;
 	}
@@ -23,6 +23,6 @@ void getAngle(void)
 		else
 			cnt_tmp = cnt_all - last_cnt;
 	}
-	motor_foc.theta = (cnt_tmp/4096.0)*360.0;
+	motor_foc.theta = (cnt_tmp/4096.0)*360;     ///motor_foc.theta = (cnt_tmp/4096.0)*360;
 	last_cnt = cnt_all;
 }
