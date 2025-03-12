@@ -4,6 +4,9 @@
 Foc motor_foc = {0};
 Filt filter = {0};
 extern motor_ctrl motor;
+extern pid Pid;
+float t0 = 0;
+
 
 uint8_t GetSector(float x, float y)
 {
@@ -46,50 +49,60 @@ void ParkConvT(void)
 	
 	motor_foc.motor_c.Ialpha = -motor_foc.motor_p.Iq*sin(theta0);
 	motor_foc.motor_c.Ibeta = motor_foc.motor_p.Iq*cos(theta0);
+	
 	motor_foc.sector = GetSector(motor_foc.motor_c.Ialpha, motor_foc.motor_c.Ibeta);
 	motor_foc.cal_angle = (motor_foc.theta  - 60*(motor_foc.sector - 1) )/180*PI;
-	motor_foc.motor_c.Ialpha = absIq*sin(motor_foc.cal_angle);
-	motor_foc.motor_c.Ibeta = -absIq*cos(motor_foc.cal_angle);
+	  
+	motor_foc.motor_c.Ialpha = absIq*sin(motor_foc.cal_angle) < 0 ? -absIq*sin(motor_foc.cal_angle) : absIq*sin(motor_foc.cal_angle);
+	motor_foc.motor_c.Ibeta = absIq*cos(motor_foc.cal_angle) < 0 ? -absIq*cos(motor_foc.cal_angle) : absIq*cos(motor_foc.cal_angle);
+	
+	
 }
+
 
 void SVPWM(void)
 {
+	
 	motor_foc.T1 = (motor_foc.motor_c.Ialpha - motor_foc.motor_c.Ibeta/SQRT3)/V_SOURCE;
 	motor_foc.T2 = 2*motor_foc.motor_c.Ibeta/SQRT3/V_SOURCE;
-	
+	t0 = 0;
 	motor_foc.idx1 = motor_foc.sector - 1;
-	
+	if(motor_foc.idx1 >= 0 && motor_foc.theta == 0){		//Iq有输出但theta没动
+		t0 = 0.4 - motor_foc.T2 - motor_foc.T1;
+		Pid.pid_out = 0;
+	}
+	t0 = t0/2;
 	switch(motor_foc.idx1)
 	{
 		case 0:
-			motor.pulsea = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulseb = 0.866*(motor_foc.T2+V_OFFSET)*(TIMARR+1);
-			motor.pulsec = 0.866*V_OFFSET*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*(motor_foc.T2+t0))*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*t0)*(TIMARR+1);
 			break;
 		case 1:
-			motor.pulsea = 0.866*(motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulseb = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulsec = 0.866*V_OFFSET*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*(motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*t0)*(TIMARR+1);
 			break;
 		case 2:
-			motor.pulsea = 0.866*V_OFFSET*(TIMARR+1);
-			motor.pulseb = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulsec = 0.866*(motor_foc.T2+V_OFFSET)*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*t0)*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*(motor_foc.T2+t0))*(TIMARR+1);
 			break;
 		case 3:
-			motor.pulsea = 0.866*V_OFFSET*(TIMARR+1);
-			motor.pulseb = 0.866*(motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulsec = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*t0)*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*(motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
 			break;
 		case 4:
-			motor.pulsea = 0.866*(motor_foc.T2+V_OFFSET)*(TIMARR+1);
-			motor.pulseb = 0.866*V_OFFSET*(TIMARR+1);
-			motor.pulsec = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*(motor_foc.T2+t0))*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*t0)*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
 			break;
 		case 5:
-			motor.pulsea = 0.866*(motor_foc.T2+motor_foc.T1+V_OFFSET)*(TIMARR+1);
-			motor.pulseb = 0.866*V_OFFSET*(TIMARR+1);
-			motor.pulsec = 0.866*(motor_foc.T1+V_OFFSET)*(TIMARR+1);
+			motor.pulsea = __constrain(0.866*(motor_foc.T2+motor_foc.T1+t0))*(TIMARR+1);
+			motor.pulseb = __constrain(0.866*t0)*(TIMARR+1);
+			motor.pulsec = __constrain(0.866*(motor_foc.T1+t0))*(TIMARR+1);
 			break;
 	}
 }

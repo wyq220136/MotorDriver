@@ -72,7 +72,7 @@ void Pid_Cal(pid*k, float e)
 	k->error = e;
 	
 	float pid_out;
-	pid_out = k->ka*k->error+k->kb*k->error_t+k->kc*k->error_t_prim;
+	pid_out = k->ka*k->error + k->kb*k->error_t + k->kc*k->error_t_prim;
 	
 	k->pid_out += pid_out;
 	k->pid_out = k->pid_out>k->limit_h?k->limit_h:(k->pid_out<k->limit_l?k->limit_l:k->pid_out);
@@ -88,7 +88,10 @@ void cal_motor(void)
 	else
 		motor.run_flag = START;
 	float err = target_angle - motor_foc.theta;
-	errr = err;
+	if(err < 0.005 && err > -0.005){
+			Pid.pid_out = 0;
+	}
+	//errr = err;
 	Pid_Cal(&Pid, err);
 	motor_foc.motor_p.Iq = Pid.pid_out;
 	ParkConvT();

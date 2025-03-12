@@ -1,6 +1,6 @@
 #ifndef FOC_H
 #define FOC_H
-
+#define __constrain(x) x>0.75?0.75:x
 #include "cfg.h"
 typedef struct
 {
@@ -33,7 +33,7 @@ typedef struct
 	float T2;
 	float angle;
 	float cal_angle;
-	uint8_t idx1;
+	int8_t idx1;
 }Foc;
 
 typedef struct

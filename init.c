@@ -112,7 +112,7 @@ void TIM_Init(void)
 	__HAL_RCC_TIM4_CLK_ENABLE();
 	
 	TIM2_Handler.Instance = TIM2;
-	TIM2_Handler.Init.Prescaler = 72-1;
+	TIM2_Handler.Init.Prescaler = 72-1; 
 	TIM2_Handler.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
 	
 	TIM2_Handler.Init.CounterMode = TIM_COUNTERMODE_UP;

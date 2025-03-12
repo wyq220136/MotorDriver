@@ -1,6 +1,6 @@
 Dependencies for Project 'MotorDriver', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
-F (.\main.c)(0x67CD3BA7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/main.o -MD)
+F (.\main.c)(0x67CD8F81)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/main.o -MD)
 I (user_inc\main.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal.h)(0x678B03CC)
 I (user_inc\stm32f1xx_hal_conf.h)(0x678B03CC)
@@ -37,10 +37,10 @@ I (user_inc\stm32f1xx_nucleo.h)(0x678B03CC)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -118,10 +118,10 @@ I (user_inc\stm32f1xx_it.h)(0x678B03CC)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1616,7 +1616,7 @@ I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_ll_utils.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_ll_system.h)(0x678B03CC)
 F (.\core\startup_stm32f103xb.s)(0x678B03CC)(--target=arm-arm-none-eabi -mcpu=cortex-m3 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"STM32F10X_MD SETA 1"-o ./objects/startup_stm32f103xb.o)
-F (.\init.c)(0x67C5A8BB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/init.o -MD)
+F (.\init.c)(0x67CD8B44)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/init.o -MD)
 I (lib\Inc\stm32f1xx_hal.h)(0x678B03CC)
 I (user_inc\stm32f1xx_hal_conf.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_rcc.h)(0x678B03CC)
@@ -1651,10 +1651,10 @@ I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1695,16 +1695,16 @@ I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
 I (usart.h)(0x678B03CC)
 I (D:\software\Keil\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
-F (.\motor_ctrl.c)(0x67C9AB88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/motor_ctrl.o -MD)
+F (.\motor_ctrl.c)(0x67CEF405)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/motor_ctrl.o -MD)
 I (cfg.h)(0x678B03C1)
 I (lib\Inc\stm32f1xx_hal.h)(0x678B03CC)
 I (user_inc\stm32f1xx_hal_conf.h)(0x678B03CC)
@@ -1739,10 +1739,10 @@ I (lib\Inc\stm32f1xx_hal_tim_ex.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1786,10 +1786,10 @@ I (lib\Inc\stm32f1xx_hal_tim_ex.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1830,10 +1830,10 @@ I (lib\Inc\stm32f1xx_hal_tim_ex.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1875,10 +1875,10 @@ I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -1990,13 +1990,13 @@ I (D:\software\Keil\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (cfg.h)(0x678B03C1)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
-F (.\foc.c)(0x67CD3A4C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/foc.o -MD)
+F (.\foc.c)(0x67CEE087)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./STM32CubeF1-master/Drivers/CMSIS/Include -I ./STM32CubeF1-master/Drivers/STM32F1xx_HAL_Driver -I ./lib/Inc -I ./core -I ./user_inc-ID:/software/Keil/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xE-o ./objects/foc.o -MD)
 I (cfg.h)(0x678B03C1)
 I (lib\Inc\stm32f1xx_hal.h)(0x678B03CC)
 I (user_inc\stm32f1xx_hal_conf.h)(0x678B03CC)
@@ -2031,10 +2031,10 @@ I (lib\Inc\stm32f1xx_hal_tim_ex.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (encode.h)(0x678B03CC)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
@@ -2077,10 +2077,10 @@ I (lib\Inc\stm32f1xx_hal_tim_ex.h)(0x678B03CC)
 I (lib\Inc\stm32f1xx_hal_uart.h)(0x678B03CC)
 I (init.h)(0x678B03CC)
 I (bldc.h)(0x678B03CC)
-I (motor_ctrl.h)(0x67C99E6F)
+I (motor_ctrl.h)(0x67CEF3BE)
 I (measure.h)(0x678B03CC)
 I (comm.h)(0x678B03CC)
-I (foc.h)(0x678B03CC)
+I (foc.h)(0x67CD4EB5)
 I (delay.h)(0x678B03CC)
 I (sys.h)(0x678B03CC)
 I (usart.h)(0x678B03CC)

@@ -2,9 +2,13 @@
 #define MOTOR_CTRL_H
 #include "stm32f1xx_hal.h"
 
-#define Kp  0.01   //0.8，0.1，0.41不会到限幅      1，0.001，直接到9    0.01半9
+#define Kp 0.3		
+//稳定的是kp0.3, ki0.01, 但是有静差
+//kp0.3   ki0.05, 60以下死区
+
+
 //0.05对应的Iq是0.05
-#define Ki  0   //0.0019
+#define Ki  0.05   //0.0019
 #define Kd 0.0
 
 //这是一个PID控制器
